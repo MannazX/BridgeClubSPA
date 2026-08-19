@@ -8,13 +8,11 @@ export default function App() {
           <div className="nav navbar-expand-lg">
             <nav className="nav navbar-nav">
               <Link to='/' className='nav-item nav-link'>Home</Link>
-              <Link to='/' className='nav-item nav-link'>Members</Link>
             </nav>
           </div>
         </div>
         <Routes>
           <Route path='/' element={<MemberList />} />
-          <Route path='/members' element={<MemberList />} />
         </Routes>
       </div>
     )
