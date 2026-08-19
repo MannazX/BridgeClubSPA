@@ -13,7 +13,10 @@
     "@reduxjs/toolkit": "^2.12.0",
     "react": "^19.2.8",
     "react-dom": "^19.2.8",
+<<<<<<< HEAD
     "react-redux": "^9.3.0",
+=======
+>>>>>>> 25fb014 (react packages added)
     "react-router-dom": "^7.18.2"
   },
   "devDependencies": {
