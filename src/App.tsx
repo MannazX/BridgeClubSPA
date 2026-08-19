@@ -1,7 +1,6 @@
 import React from "react"
 import { Routes, Route, Link } from "react-router-dom";
-import MemberDetails from "./components/memberDetails";
-
+import MemberList from "./components/memberList";
 export default function App() {
     return (
       <div>
@@ -14,8 +13,8 @@ export default function App() {
           </div>
         </div>
         <Routes>
-          <Route path='/' element={<MemberDetails />} />
-          <Route path='/members' element={<MemberDetails />} />
+          <Route path='/' element={<MemberList />} />
+          <Route path='/members' element={<MemberList />} />
         </Routes>
       </div>
     )

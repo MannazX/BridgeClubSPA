@@ -1,25 +1,7 @@
-import React from "react";
-import { useFetchMembersQuery } from "../store";
+import { type Member } from "../interfaces/member"
 
-function MemberDetails() {
-    const {data, error, isFetching} = useFetchMembersQuery();
-    console.log(data, error, isFetching);
-
-    let content;
-    if (isFetching) {
-        content = <div>Loading...</div>;
-    }
-    else if (error) {
-        content = <div>Error loading the members</div>;
-    }
-    else {
-        content = data.map((member) => {
-            return <p>{member.name}</p>
-        })
-    }
+export default function MemberDetails({member}: {member : Member}) {
     return (
-        <div>{content}</div>
+        <div key={member.memberId}>Name: {member.name}</div>
     )
 }
-
-export default MemberDetails;
