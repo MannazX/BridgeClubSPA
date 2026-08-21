@@ -24,5 +24,10 @@ export default function MemberList() {
             </div>
         ));
     }
-    return <div><h1>Medlemsliste</h1><div>{content}</div></div>
+    return (
+        <div>
+            <h1>Medlemsliste</h1>
+            <div>{content}</div>
+        </div>
+    )
 }
