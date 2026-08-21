@@ -19,10 +19,10 @@ export default function MemberList() {
     }
     else {
         content = data?.map((member) => (
-            <div key={member.memberId}>
+            <div key={member.membeR_ID}>
                 <MemberDetails member={member} />
             </div>
         ));
     }
-    return <div>{content}</div>
+    return <div><h1>Medlemsliste</h1><div>{content}</div></div>
 }
