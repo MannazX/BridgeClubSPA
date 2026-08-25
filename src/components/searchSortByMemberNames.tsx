@@ -20,7 +20,7 @@ function SearchSortedMembers() {
     }
 
     return (
-        <form onSubmit={(e) => { e.preventDefault(); handleSubmit()} }>
+        <form onSubmit={(event) => { event.preventDefault(); handleSubmit() } }>
             <label>Søg Medlem</label>
             <input className="input ml-2" value={name} onChange={handleNameChange}></input>
         </form>
