@@ -1,5 +1,6 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { type Member } from "../../interfaces/member";
+import { type GetParams } from "../../interfaces/params";
 
 const memberApi = createApi({
     reducerPath: 'Member',
@@ -16,33 +17,22 @@ const memberApi = createApi({
                     };
                 },
             }),
-            fetchMemberByFirstName: builder.query<Member[], void>({
-                query: (firstname) => {
+            fetchMemberByName: builder.query<Member[], GetParams>({
+                query: ({firstname, lastname, sorting}) => {
                     return {
                         url: 'Member',
                         params: {
-                            firstName: firstname, 
-                            sortBy: 'firstName',
+                            firstName: firstname,
+                            lastName: lastname,
+                            sortBy: sorting,
                         },
                         method: 'GET',
                     };
                 },
             }),
-            fetchMemberByLastName: builder.query<Member[], void>({
-                query: (lastname) => {
-                    return {
-                        url: 'Member',
-                        params: {
-                            lastName: lastname,
-                            sortBy: 'firstName',
-                        },
-                        method: 'GET',
-                    }
-                }
-            })
         }
     }
 });
 
-export const { useFetchMembersQuery, useFetchMemberByFirstNameQuery, useLazyFetchMemberByLastNameQuery } = memberApi;
+export const { useFetchMembersQuery, useFetchMemberByNameQuery } = memberApi;
 export { memberApi };
