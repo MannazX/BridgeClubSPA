@@ -15,10 +15,34 @@ const memberApi = createApi({
                         method: 'GET',
                     };
                 },
+            }),
+            fetchMemberByFirstName: builder.query<Member[], void>({
+                query: (firstname) => {
+                    return {
+                        url: 'Member',
+                        params: {
+                            firstName: firstname, 
+                            sortBy: 'firstName',
+                        },
+                        method: 'GET',
+                    };
+                },
+            }),
+            fetchMemberByLastName: builder.query<Member[], void>({
+                query: (lastname) => {
+                    return {
+                        url: 'Member',
+                        params: {
+                            lastName: lastname,
+                            sortBy: 'firstName',
+                        },
+                        method: 'GET',
+                    }
+                }
             })
         }
     }
 });
 
-export const { useFetchMembersQuery } = memberApi;
+export const { useFetchMembersQuery, useFetchMemberByFirstNameQuery, useLazyFetchMemberByLastNameQuery } = memberApi;
 export { memberApi };

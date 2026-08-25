@@ -26,7 +26,7 @@ export default function MemberList() {
     }
     return (
         <div>
-            <h1>Medlemsliste</h1>
+            <h2 className="text-start">Spiller</h2>
             <div>{content}</div>
         </div>
     )
