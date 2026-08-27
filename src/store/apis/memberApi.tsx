@@ -18,12 +18,11 @@ const memberApi = createApi({
                 },
             }),
             fetchMemberByName: builder.query<Member[], GetParams>({
-                query: ({firstname, lastname, sorting}) => {
+                query: ({name, sorting}) => {
                     return {
                         url: 'Member',
                         params: {
-                            firstName: firstname,
-                            lastName: lastname,
+                            searchName: name,
                             sortBy: sorting,
                         },
                         method: 'GET',

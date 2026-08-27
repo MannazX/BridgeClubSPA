@@ -1,5 +1,4 @@
 export interface GetParams {
-    firstname: string;
-    lastname: string;
+    name: string;
     sorting: string;
 }
