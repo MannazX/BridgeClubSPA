@@ -11,27 +11,13 @@ function SearchSortedMemberList() {
 
     const {data, error, isFetching} = useFetchMemberByNameQuery(searchMember);
 
-    const normalizedSearchName = searchMember.name.trim().toLowerCase();
-
     let content;
     if (isFetching) {
         content = <div>Loading...</div>
     } else if (error) {
         content = <div>Error loading Members.</div>
     } else {
-        const processedData = data?.filter((member) => {
-            if (!normalizedSearchName) {
-                return true;
-            }
-
-            const nameOptions = [member.name, member.firsT_NAME, member.lasT_NAME]
-                .filter(Boolean)
-                .join(" ")
-                .toLowerCase()
-
-            return nameOptions.includes(normalizedSearchName);
-            
-        })
+        const processedData = data?.filter((member) => member.name?.includes(searchMember.name.toLowerCase()))
         .sort((firstOption, secondOption) => {
             const firstName = searchMember.sorting === 'firsT_NAME' ? firstOption.firsT_NAME : firstOption.lasT_NAME;
             const secondName = searchMember.sorting === 'firsT_NAME' ? secondOption.firsT_NAME : secondOption.lasT_NAME;
