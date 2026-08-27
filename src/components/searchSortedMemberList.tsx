@@ -17,7 +17,9 @@ function SearchSortedMemberList() {
     } else if (error) {
         content = <div>Error loading Members.</div>
     } else {
-        const processedData = data?.filter((member) => member.name?.includes(searchMember.name.toLowerCase()))
+        const memberName = searchMember.name.trim();
+        const processedData = data?.filter((member) => member.name?.includes(memberName.charAt(0).toUpperCase() + memberName.slice(1)))
+
         .sort((firstOption, secondOption) => {
             const firstName = searchMember.sorting === 'firsT_NAME' ? firstOption.firsT_NAME : firstOption.lasT_NAME;
             const secondName = searchMember.sorting === 'firsT_NAME' ? secondOption.firsT_NAME : secondOption.lasT_NAME;
