@@ -1,15 +1,24 @@
 import { useFetchMemberByNameQuery, type RootState } from "../store";
 import { useSelector } from "react-redux";
 import type { GetParams } from "../interfaces/params";
-import MemberDetails from "./memberDetails";
+import MemberDetails from "./memberTable";
+import { useState } from "react";
+import GetMembersById from "./getMembersById";
+import SearchSortedMembers from "./searchSortByMemberNames";
 
-function SearchSortedMemberList() {
+export default function SearchSortedMemberList() {
     const searchMember: GetParams = useSelector((state: RootState) => ({
         name: state.searchSortedMember.searchName,
         sorting: state.searchSortedMember.sortBy
     }));
 
     const {data, error, isFetching} = useFetchMemberByNameQuery(searchMember);
+
+    const [memberID, setMemberID] = useState<number>(1);
+    const handleSelectId = (id: number) => {
+        setMemberID(id);
+        console.log(`${memberID} selected`);
+    }
 
     let content;
     if (isFetching) {
@@ -19,7 +28,6 @@ function SearchSortedMemberList() {
     } else {
         const memberName = searchMember.name.trim();
         const processedData = data?.filter((member) => member.name?.includes(memberName.charAt(0).toUpperCase() + memberName.slice(1)))
-
         .sort((firstOption, secondOption) => {
             const firstName = searchMember.sorting === 'firsT_NAME' ? firstOption.firsT_NAME : firstOption.lasT_NAME;
             const secondName = searchMember.sorting === 'firsT_NAME' ? secondOption.firsT_NAME : secondOption.lasT_NAME;
@@ -30,18 +38,18 @@ function SearchSortedMemberList() {
         if (!processedData) {
             content = <div>Did not process right.</div>
         } else {
-            content = processedData?.map((member) => {
-                return <MemberDetails key={member.membeR_ID} member={member} />
-            })
+            content = <>
+                <MemberDetails members={processedData} selectedId={handleSelectId}/>
+                <GetMembersById id={memberID} />
+            </>
         }
     }
 
     return (
         <div>
-            <h2 className="text-start">Søgte Spillere</h2>
-            <div>{content}</div>
+            <h2 className="text-center">Søgte Spillere</h2>
+            <SearchSortedMembers /><br></br>
+            <div style={{ display: 'flex', justifyContent: 'center', gap: '200px', width: '100%'}}>{content}</div>
         </div>
     )
 }
-
-export default SearchSortedMemberList;

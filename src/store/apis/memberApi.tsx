@@ -29,9 +29,17 @@ const memberApi = createApi({
                     };
                 },
             }),
+            fetchMemberById: builder.query<Member, number | undefined>({
+                query: (id) => {
+                    return {
+                        url: `Member/${id}`,
+                        method: 'GET',
+                    };
+                },  
+            }),
         }
     }
 });
 
-export const { useFetchMembersQuery, useFetchMemberByNameQuery } = memberApi;
+export const { useFetchMembersQuery, useFetchMemberByNameQuery, useFetchMemberByIdQuery } = memberApi;
 export { memberApi };

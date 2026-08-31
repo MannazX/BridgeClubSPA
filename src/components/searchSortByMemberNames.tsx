@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { changeName, changeSorting, type RootState } from '../store';
 import { useNavigate } from 'react-router-dom';
 
-function SearchSortedMembers() {
+export default function SearchSortedMembers() {
 
     const navigate = useNavigate();
     const dispatch = useDispatch();
@@ -18,26 +18,35 @@ function SearchSortedMembers() {
         dispatch(changeName(event.target.value));
     }
 
-    const handleSortChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+    const handleSortChange = (event: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
         dispatch(changeSorting(event.target.value));
     }
 
     const handleSubmit = () => {
-        navigate("/findSpillere");
+        navigate("/soegSpillere");
     }
 
     return (
         <form onSubmit={(event) => { event.preventDefault(); handleSubmit() } }>
-            <label>Søg Medlem</label>
-            <input className="input ml-2" value={name} onChange={handleNameChange}></input>
-            <label className="ml-2">Sorter i spillere </label>
-            <select className="ml-2" value={sorting} onChange={handleSortChange}>
-                <option value="firsT_NAME">Fornavn</option>
-                <option value="lasT_NAME">Efternavn</option>
-            </select>
-            <button type="submit" className="btn btn-primary">Søg</button>
+            <span className="inline-block mr-2">Søg Spiller</span>
+            <input className="input inline-block mx-2" value={name} onChange={handleNameChange}></input>
+            
+            
+            <div className="inline-block mx-2">
+                <span className="input inline-block mx-2">Sorter Efter</span>
+                <label className="mr-3 cursor-pointer">
+                    <input type="radio" name="sorting" value="firsT_NAME" checked={sorting === "firsT_NAME"} onChange={handleSortChange} className="mr-1" />
+                    Fornavn
+                </label>
+                
+                <label className="inline-block mx-2">
+                    <input type="radio" name="sorting" value="lasT_NAME" checked={sorting === "lasT_NAME"} onChange={handleSortChange} className='mr-1' />
+                    Efternavn 
+                </label>
+            </div>
+            <span className="input inline-block mx-2"><br></br></span>
+            <button type="submit" className="btn btn-primary ml-2">Søg</button>
+            
         </form>
     )
 }
-
-export default SearchSortedMembers;
