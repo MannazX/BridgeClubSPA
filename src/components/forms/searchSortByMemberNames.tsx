@@ -1,6 +1,6 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { changeName, changeSorting, type RootState } from '../store';
+import { changeName, changeSorting, type RootState } from '../../store';
 import { useNavigate } from 'react-router-dom';
 
 export default function SearchSortedMembers() {

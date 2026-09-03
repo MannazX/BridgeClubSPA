@@ -1,5 +1,4 @@
-import { Link } from "react-router-dom";
-import type { MemberTableProps } from "../interfaces/memberTableProps";
+import type { MemberTableProps } from "../../interfaces/memberTableProps";
 
 export default function MemberTable({members, selectedId}: MemberTableProps) {
 
@@ -8,7 +7,7 @@ export default function MemberTable({members, selectedId}: MemberTableProps) {
         <table className="member-table">
             <thead>
                 <tr>
-                    <th scope="col">Medlemsoversigt</th>
+                    <th scope="col">Medlemmer</th>
                     <th scope="col">Vis info</th>
                 </tr>
             </thead>

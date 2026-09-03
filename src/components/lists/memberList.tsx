@@ -1,33 +1,28 @@
-import React from "react";
-import { useFetchMembersQuery } from "../store";
-import MemberTable from "./memberTable";
-import SearchSortedMembers from "./searchSortByMemberNames";
-import GetMembersById from "./getMembersById";
+import FetchMembers from "../../helpers/fetchMembers";
+import MemberTable from "../tables/memberTable";
+import SearchSortedMembers from "../forms/searchSortByMemberNames";
+import GetMemberTableById from "../getMemberTableById";
 import { useState } from "react";
 
 
 export default function MemberList() {
-    const {data, error, isFetching} = useFetchMembersQuery();
-    console.log(data, error, isFetching);
-    
+   
     const [memberID, setMemberID] = useState<number>(1);
     const handleSelectId = (id: number) => {
         setMemberID(id);
         console.log(`${memberID} selected`);
     }
 
+    const memberData = FetchMembers();
     let content;
     
-    if (isFetching) {
-        content = <div>Indlæser...</div>;
-    }
-    else if (error) {
-        content = <div>Fejl ved at hente medlemmer</div>;
+    if (!memberData) {
+        content = <div>Ingen spillere kunne hentes</div>
     }
     else {
         content = <>
-            <MemberTable members={data ?? null} selectedId={handleSelectId} />
-            <GetMembersById id={memberID} />
+            <MemberTable members={memberData} selectedId={handleSelectId} />
+            <GetMemberTableById id={memberID} />
         </>
     }
     return (

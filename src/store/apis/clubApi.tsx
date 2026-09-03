@@ -16,9 +16,17 @@ const clubApi = createApi({
                     };
                 },
             }),
+            fetchClubById: builder.query<Club, number | undefined>({
+                query: (id) => {
+                    return {
+                        url: `Club/${id}`,
+                        method: 'GET',
+                    };
+                },
+            }),
         }
     }
 })
 
-export const { useFetchClubsQuery } = clubApi;
+export const { useFetchClubsQuery, useFetchClubByIdQuery } = clubApi;
 export { clubApi };

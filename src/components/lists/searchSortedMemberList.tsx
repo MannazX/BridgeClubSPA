@@ -1,10 +1,10 @@
-import { useFetchMemberByNameQuery, type RootState } from "../store";
+import { useFetchMemberByNameQuery, type RootState } from "../../store";
 import { useSelector } from "react-redux";
-import type { GetParams } from "../interfaces/params";
-import MemberDetails from "./memberTable";
+import type { GetParams } from "../../interfaces/params";
+import MemberDetails from "../tables/memberTable";
 import { useState } from "react";
-import GetMembersById from "./getMembersById";
-import SearchSortedMembers from "./searchSortByMemberNames";
+import GetMembersById from "../getMemberTableById";
+import SearchSortedMembers from "../forms/searchSortByMemberNames";
 
 export default function SearchSortedMemberList() {
     const searchMember: GetParams = useSelector((state: RootState) => ({

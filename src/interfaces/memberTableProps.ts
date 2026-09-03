@@ -1,6 +1,6 @@
 import { type Member } from "./member";
 
 export interface MemberTableProps {
-    members: Member[] | null;
+    members: Member[] | undefined;
     selectedId: (id: number) => void;
 }

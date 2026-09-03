@@ -1,4 +1,4 @@
-import { type Member } from "../interfaces/member";
+import { type Member } from "../../interfaces/member";
 
 export default function MemberDetailsTable({member}: {member : Member}) {
     return (
