@@ -1,6 +1,6 @@
 import FetchMembers from "../../helpers/fetchMembers";
 import { type MemberClub } from "../../interfaces/memberClub";
-import { type PartnerPair } from "../../interfaces/PartnerPair";
+import { type PartnerPair } from "../../interfaces/partnerPair";
 export default function MemberClubTable({memberClubs}: {memberClubs: MemberClub[] | null}) {
     const memberData = FetchMembers();
     let memberName: string;

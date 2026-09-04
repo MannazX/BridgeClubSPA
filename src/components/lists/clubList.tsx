@@ -22,6 +22,9 @@ export default function ClubList() {
     if (!clubData) {
         content = <div>Ingen klubber kunne hentes</div>
     }
+    else if (typeof clubData === "boolean") {
+        content = <div>Henter klubber</div>
+    }
     else {
         content = <>
             <ClubTable clubs={clubData} selectedId={handleSelectId} navigateToClubMembers={handleNavigateMembersInClub}/>
@@ -32,6 +35,7 @@ export default function ClubList() {
     return (
         <div>
             <h2 className="text-center">Kluboversigt</h2>
+            <br></br><br></br>
             <div style={{ display: 'flex', justifyContent: 'center', gap: '200px', width: '100%'}}>{content}</div>
         </div>
     )

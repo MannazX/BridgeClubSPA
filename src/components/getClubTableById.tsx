@@ -7,8 +7,10 @@ export default function GetClubTableById({id}: {id: number}) {
     const clubData = FetchClubById(id);
 
     if (!clubData) {
-        content = <div>Data kunne ikke hentes</div>
-    
+        content = <div>Klubber kunne ikke hentes</div>
+    }
+    else if (typeof clubData === "boolean") {
+        content = <div>Henter klubdata</div>
     } else {
         content = <ClubDetailsTable club={clubData} />
     }

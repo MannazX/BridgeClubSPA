@@ -19,6 +19,9 @@ export default function MemberList() {
     if (!memberData) {
         content = <div>Ingen spillere kunne hentes</div>
     }
+    else if (typeof memberData === "boolean") {
+        content = <div>Henter spillere</div>
+    }
     else {
         content = <>
             <MemberTable members={memberData} selectedId={handleSelectId} />

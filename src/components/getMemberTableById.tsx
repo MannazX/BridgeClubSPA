@@ -9,6 +9,9 @@ export default function GetMemberTableById({id}: {id: number}) {
     if (!memberData) {
         content = <div>Data kunne ikke hentes</div>
     }
+    else if (typeof memberData === "boolean") {
+        content = <div>Henter medlemsdata</div>
+    }
     else {
         content = <MemberDetailsTable member={memberData} />
     }

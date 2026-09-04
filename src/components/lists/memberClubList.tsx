@@ -10,14 +10,18 @@ export default function MemberClubList() {
     let content;
     
     if (!memberClubData) {
-        content = <div>Kunne ikke data</div>
-    } else {
+        content = <div>Kunne ikke hente data</div>
+    }
+    else if (typeof memberClubData === "boolean") {
+        content = <div>Henter klubspiller data</div>
+    }
+    else {
         content = <>
             <MemberClubTable memberClubs={memberClubData} />
         </>
     }
 
     return (
-        <div>{content}</div>
+        <div style={{ display: 'flex', justifyContent: 'center', gap: '200px', width: '100%'}}>{content}</div>
     )
 }

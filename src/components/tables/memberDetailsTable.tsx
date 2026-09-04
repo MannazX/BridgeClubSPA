@@ -15,6 +15,10 @@ export default function MemberDetailsTable({member}: {member : Member}) {
                     <td>{member.name}</td>
                 </tr>
                 <tr>
+                    <td>Titel</td>
+                    <td>{member.title}</td>
+                </tr>
+                <tr>
                     <td>Adresse</td>
                     <td>{member.addresS_1}</td>
                 </tr>
@@ -37,6 +41,26 @@ export default function MemberDetailsTable({member}: {member : Member}) {
                 <tr>
                     <td>Email</td>
                     <td>{member.email}</td>
+                </tr>
+                <tr>
+                    <td>Total Bronze</td>
+                    <td>{member.totaL_BRONZE}</td>
+                </tr>
+                <tr>
+                    <td>Total Silver</td>
+                    <td>{member.totaL_SILVER}</td>
+                </tr>
+                <tr>
+                    <td>Total Gold</td>
+                    <td>{member.totaL_GOLD}</td>
+                </tr>
+                <tr>
+                    <td>Total Master</td>
+                    <td>{member.totaL_MASTER}</td>
+                </tr>
+                <tr>
+                    <td>HAC Score</td>
+                    <td>{member.hac}</td>
                 </tr>
             </tbody>
         </table>
